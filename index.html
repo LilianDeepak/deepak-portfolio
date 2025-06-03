@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepak R - Professional Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: #00ff00;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(0, 20, 40, 0.9);
+            border: 3px solid #00ff00;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff0000, #ffff00, #00ff00);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .status-bar {
+            background: #003300;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .status-item {
+            color: #00ff00;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .certified-badge {
+            background: #ff6600;
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 10px;
+        }
+
+        .profile-section {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 220px;
+            background: linear-gradient(45deg, #003300, #006600);
+            border: 3px solid #00ff00;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 7px;
+        }
+
+        .profile-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            align-content: start;
+        }
+
+        .detail-item {
+            background: rgba(0, 50, 0, 0.5);
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            padding: 8px;
+            font-size: 11px;
+        }
+
+        .detail-label {
+            color: #ffff00;
+            font-weight: bold;
+            display: block;
+        }
+
+        .detail-value {
+            color: #00ff00;
+            margin-top: 2px;
+        }
+
+        .infractions-section {
+            background: rgba(20, 0, 0, 0.8);
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .infractions-title {
+            color: #ff0000;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .achievement-item {
+            background: rgba(0, 30, 0, 0.8);
+            border-left: 4px solid #00ff00;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .achievement-title {
+            color: #ffff00;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .achievement-desc {
+            color: #00ff00;
+            font-size: 10px;
+            margin-top: 5px;
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .stat-box {
+            background: rgba(0, 20, 40, 0.8);
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 24px;
+            color: #00ff00;
+            font-weight: bold;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        .stat-label {
+            color: #ffff00;
+            font-size: 10px;
+            margin-top: 5px;
+        }
+
+        .total-fine {
+            background: rgba(0, 50, 0, 0.9);
+            border: 3px solid #00ff00;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .fine-amount {
+            font-size: 36px;
+            color: #00ff00;
+            font-weight: bold;
+            text-shadow: 0 0 15px #00ff00;
+        }
+
+        .fine-label {
+            color: #ffff00;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .contact-item {
+            background: rgba(0, 30, 0, 0.8);
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            padding: 8px 12px;
+            font-size: 10px;
+            color: #00ff00;
+        }
+
+        .guilty-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff0000;
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+            transform: rotate(15deg);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .profile-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .profile-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .status-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        .blink {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="guilty-badge">HIRE ME!</div>
+        
+        <div class="status-bar">
+            <div class="status-item">Professional Status: <span style="color: #00ff00;">ACTIVE</span></div>
+            <div class="status-item">Location: Chennai, India</div>
+            <div class="status-item">Experience Level: <span style="color: #ffff00;">MID-LEVEL</span></div>
+            <div class="certified-badge">CERTIFIED</div>
+        </div>
+
+        <div class="header">
+            <h1 style="color: #00ff00; font-size: 24px; margin-bottom: 10px;">DEVELOPER PROFILE CERTIFICATION</h1>
+            <div style="color: #ffff00; font-size: 12px;">TECHNICAL PROFESSIONAL ASSESSMENT RECORD</div>
+        </div>
+
+        <div class="profile-section">
+            <div class="profile-image">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCADcALQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiv/9k=" alt="Deepak R Profile Picture">
+            </div>
+            
+            <div class="profile-details">
+                <div class="detail-item">
+                    <span class="detail-label">NAME:</span>
+                    <span class="detail-value">R DEEPAK</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">ID:</span>
+                    <span class="detail-value">MCA-2025-DR</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">EDUCATION:</span>
+                    <span class="detail-value">Master of Computer Applications</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">CGPA:</span>
+                    <span class="detail-value">7.8/10</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">SPECIALIZATION:</span>
+                    <span class="detail-value">Backend Development</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">STATUS:</span>
+                    <span class="detail-value blink">SEEKING OPPORTUNITIES</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- INTERNSHIPS SECTION -->
+        <div class="infractions-section">
+            <div class="infractions-title">PROFESSIONAL INTERNSHIP EXPERIENCE</div>
+            
+            <div class="achievement-item">
+                <div class="achievement-title">• MYNERVA - Backend Developer Intern (Dec '24 - Feb '25)</div>
+                <div class="achievement-desc">Developed backend for Aroma Cooking App with 600+ recipes MongoDB integration. Designed and optimized API endpoints for seamless data retrieval and performance.</div>
+            </div>
+            
+            <div class="achievement-item">
+                <div class="achievement-title">• INTERNSHIP STUDIO - Data Analyst Intern (Aug-Sep '24)</div>
+                <div class="achievement-desc">Created comprehensive Power BI dashboards for data visualization. Worked with SQL, Python (Anaconda), and Excel to analyze complex datasets and generate actionable reports.</div>
+            </div>
+            
+            <div class="achievement-item">
+                <div class="achievement-title">• PRODIGY INFOTECH - Web Development Intern (Oct-Nov '24)</div>
+                <div class="achievement-desc">Developed responsive web applications using HTML, CSS, JavaScript. Implemented interactive UI components and utilized Git/GitHub for version control and collaboration.</div>
+            </div>
+        </div>
+
+        <!-- GITHUB PROJECTS SECTION -->
+        <div class="infractions-section" style="border-color: #0099ff;">
+            <div class="infractions-title" style="color: #0099ff;">GITHUB PROJECT REPOSITORY - OPEN SOURCE CONTRIBUTIONS</div>
+            
+            <div class="achievement-item" style="border-left-color: #0099ff;">
+                <div class="achievement-title" style="color: #00ccff;">🤖 AI-File-Summarize</div>
+                <div class="achievement-desc">Smart AI tool that generates concise summaries from PDF and DOCX documents using artificial intelligence. Helps users quickly grasp key information without reading entire documents. Built with advanced NLP techniques.</div>
+                <div class="achievement-desc" style="color: #66ccff; font-size: 9px; margin-top: 5px;">🔗 github.com/LilianDeepak/AI-File-Summarize</div>
+            </div>
+            
+            <div class="achievement-item" style="border-left-color: #0099ff;">
+                <div class="achievement-title" style="color: #00ccff;">📚 AI-Library-System</div>
+                <div class="achievement-desc">AI-Powered E-Library System with smart digital library platform. Features AI-driven book recommendations, advanced search, cataloging, user management, and document summarization capabilities.</div>
+                <div class="achievement-desc" style="color: #66ccff; font-size: 9px; margin-top: 5px;">🔗 github.com/LilianDeepak/AI-Library-System</div>
+            </div>
+            
+            <div class="achievement-item" style="border-left-color: #0099ff;">
+                <div class="achievement-title" style="color: #00ccff;">🚇 AI-Powered-Subway-Control-System</div>
+                <div class="achievement-desc">Innovative AI system designed for accessibility - assists hand-disabled individuals with touch-free subway interaction. Uses computer vision and AI to detect hand gestures for seamless public transport control.</div>
+                <div class="achievement-desc" style="color: #66ccff; font-size: 9px; margin-top: 5px;">🔗 github.com/LilianDeepak/AI-powered-subway-control-system</div>
+            </div>
+            
+            <div class="achievement-item" style="border-left-color: #0099ff;">
+                <div class="achievement-title" style="color: #00ccff;">📊 POWER-BI-DASHBOARD</div>
+                <div class="achievement-desc">Interactive IPL Cricket Dashboard with comprehensive data visualization. Advanced Power BI implementation for sports analytics, player statistics, and team performance insights with dynamic filtering capabilities.</div>
+                <div class="achievement-desc" style="color: #66ccff; font-size: 9px; margin-top: 5px;">🔗 github.com/LilianDeepak/POWER-BI-DASHBOARD</div>
+            </div>
+        </div>
+
+        <!-- SKILLS SECTION -->
+        <div class="infractions-section" style="border-color: #ff9900;">
+            <div class="infractions-title" style="color: #ff9900;">TECHNICAL SKILL CERTIFICATIONS</div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+                <div class="achievement-item" style="border-left-color: #ff9900;">
+                    <div class="achievement-title" style="color: #ffcc00;">Programming Languages</div>
+                    <div class="achievement-desc">C, Java - Advanced proficiency with object-oriented programming and data structures</div>
+                </div>
+                
+                <div class="achievement-item" style="border-left-color: #ff9900;">
+                    <div class="achievement-title" style="color: #ffcc00;">Databases & Analytics</div>
+                    <div class="achievement-desc">MySQL, MongoDB, Power BI, Excel, Power Query - Database design and data visualization</div>
+                </div>
+                
+                <div class="achievement-item" style="border-left-color: #ff9900;">
+                    <div class="achievement-title" style="color: #ffcc00;">Web Technologies</div>
+                    <div class="achievement-desc">HTML, CSS, JavaScript, React.js, Firebase - Frontend and backend web development</div>
+                </div>
+                
+                <div class="achievement-item" style="border-left-color: #ff9900;">
+                    <div class="achievement-title" style="color: #ffcc00;">Tools & Platforms</div>
+                    <div class="achievement-desc">Git, GitHub, Anaconda Python - Version control and development environment management</div>
+                </div>
+                
+                <div class="achievement-item" style="border-left-color: #ff9900;">
+                    <div class="achievement-title" style="color: #ffcc00;">Certifications</div>
+                    <div class="achievement-desc">Oracle SQL, Power BI Data Analyst, Advanced Java Programming, SQL Advanced (HackerRank)</div>
+                </div>
+                
+                <div class="achievement-item" style="border-left-color: #ff9900;">
+                    <div class="achievement-title" style="color: #ffcc00;">Languages</div>
+                    <div class="achievement-desc">English, Hindi, Tamil, Telugu - Multilingual communication capabilities</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <div class="stat-box">
+                <div class="stat-number">3</div>
+                <div class="stat-label">SUCCESSFUL INTERNSHIPS</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">4</div>
+                <div class="stat-label">GITHUB PROJECTS</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">600+</div>
+                <div class="stat-label">RECIPES INTEGRATED</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">DEVICES ANALYZED</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">5</div>
+                <div class="stat-label">CERTIFICATIONS</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">4</div>
+                <div class="stat-label">LANGUAGES SPOKEN</div>
+            </div>
+        </div>
+
+        <div class="total-fine">
+            <div class="fine-amount">HIRE VALUE</div>
+            <div style="font-size: 28px; color: #00ff00; margin: 10px 0;">EXCEPTIONAL</div>
+            <div class="fine-label">Total Professional Worth Based On Skills & Experience</div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 20px; font-size: 10px;">
+                <div style="background: rgba(0,40,0,0.8); padding: 8px; border-radius: 5px;">
+                    <div style="color: #ffff00;">BACKEND DEVELOPMENT</div>
+                    <div style="color: #00ff00;">MongoDB, APIs</div>
+                </div>
+                <div style="background: rgba(0,40,0,0.8); padding: 8px; border-radius: 5px;">
+                    <div style="color: #ffff00;">DATA ANALYTICS</div>
+                    <div style="color: #00ff00;">Power BI, SQL</div>
+                </div>
+                <div style="background: rgba(0,40,0,0.8); padding: 8px; border-radius: 5px;">
+                    <div style="color: #ffff00;">WEB DEVELOPMENT</div>
+                    <div style="color: #00ff00;">HTML, CSS, JS</div>
+                </div>
+                <div style="background: rgba(0,40,0,0.8); padding: 8px; border-radius: 5px;">
+                    <div style="color: #ffff00;">PROGRAMMING</div>
+                    <div style="color: #00ff00;">Java, C, Python</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-info">
+            <div class="contact-item">📧 deepak524511cnr@gmail.com</div>
+            <div class="contact-item">📱 9962913469</div>
+            <div class="contact-item">🌐 linkedin.com/in/deepak-r-216343230</div>
+            <div class="contact-item">💻 github.com/LilianDeepak</div>
+            <div class="contact-item">📍 Chennai, Tamil Nadu</div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px; font-size: 10px; color: #666;">
+            Evidence reviewed by: <span style="color: #00ff00;">HR TECH SYSTEMS</span> | 
+            <span style="color: #ffff00;">STATUS: VERIFIED</span>
+        </div>
+    </div>
+</body>
+</html>
